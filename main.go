@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/Marco98/ytpodproxy/pkg/server"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -16,4 +17,7 @@ func main() {
 		"commit":  commit,
 		"date":    date,
 	}).Info("starting ytpodproxy")
+	if err := server.Run(); err != nil {
+		log.WithError(err).Fatal("fatal exception")
+	}
 }
